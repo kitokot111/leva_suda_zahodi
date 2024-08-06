@@ -8,39 +8,41 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            backgroundColor: Colors.purpleAccent,
-            appBar: AppBar(
-              title: Text(
-                'Counter',
+      home: Scaffold(
+        backgroundColor: Colors.purpleAccent,
+        appBar: AppBar(
+          title: const Text(
+            'Counter',
+          ),
+          titleTextStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
+          backgroundColor: Colors.purple,
+          centerTitle: true,
+        ),
+        body: const Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Tap "-" to decrement',
+                style: TextStyle(
+                  fontSize: 17,
+                ),
               ),
-              titleTextStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+              MyCounterWidget(),
+              Text(
+                'Tap "+" to increment',
+                style: TextStyle(
+                  fontSize: 17,
+                ),
               ),
-              backgroundColor: Colors.purple,
-              centerTitle: true,
-            ),
-            body: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Tap "-" to decrement',
-                    style: TextStyle(
-                      fontSize: 17,
-                    ),
-                  ),
-                  MyCounterWidget(),
-                  Text(
-                    'Tap "+" to increment',
-                    style: TextStyle(
-                      fontSize: 17,
-                    ),
-                  ),
-                ],
-              ),
-            )));
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -65,20 +67,25 @@ class _MyCounterWidgetState extends State<MyCounterWidget> {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-              onPressed: () {
-                setState(() {
-                  _count -= 1;
-                });
-              },
-              icon: Icon(Icons.remove)),
-          Text('$_count'),
+            onPressed: () {
+              setState(() {
+                _count -= 1;
+              });
+            },
+            icon: const Icon(Icons.remove),
+          ),
+          Text(
+            '$_count',
+            style: const TextStyle(fontSize: 17),
+          ),
           IconButton(
-              onPressed: () {
-                setState(() {
-                  _count += 1;
-                });
-              },
-              icon: Icon(Icons.add)),
+            onPressed: () {
+              setState(() {
+                _count += 1;
+              });
+            },
+            icon: const Icon(Icons.add),
+          ),
         ],
       ),
     );
