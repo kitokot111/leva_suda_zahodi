@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
                 'Counter',
               ),
               titleTextStyle: TextStyle(
-
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
               ),
@@ -28,9 +27,17 @@ class MyApp extends StatelessWidget {
                 children: [
                   Text(
                     'Tap "-" to decrement',
+                    style: TextStyle(
+                      fontSize: 17,
+                    ),
                   ),
                   MyCounterWidget(),
-                  Text('Tap "+" to increment'),
+                  Text(
+                    'Tap "+" to increment',
+                    style: TextStyle(
+                      fontSize: 17,
+                    ),
+                  ),
                 ],
               ),
             )));
@@ -52,7 +59,7 @@ class _MyCounterWidgetState extends State<MyCounterWidget> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
