@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -37,13 +38,28 @@ class _stopWatchBody extends StatefulWidget {
 }
 
 class _stopWatchBodyState extends State<_stopWatchBody> {
-
   Timer? timer;
   int _seconds = 0;
   int _minutes = 0;
   int _hours = 0;
+  bool _startWatch = false;
+
+  void stop() {
+    timer!.cancel();
+    _startWatch = false;
+  }
+
+  void reset() {
+    timer!.cancel();
+    setState(() {
+      _seconds = 0;
+      _minutes = 0;
+      _hours = 0;
+    });
+  }
 
   void start() {
+    _startWatch = true;
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       int _localSeconds = _seconds + 1;
       int _localMinutes = _minutes;
@@ -60,9 +76,9 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
       }
 
       setState(() {
-        _localSeconds = _seconds;
-        _localMinutes = _minutes;
-        _localHours = _hours;
+        _seconds = _localSeconds;
+        _minutes = _localMinutes;
+        _hours = _localHours;
       });
     });
   }
@@ -78,35 +94,35 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
             children: [
               Text(
                 '$_hours',
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 45),
               ),
               SizedBox(
                 width: 5,
               ),
               Text(
                 ':',
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 25),
               ),
               SizedBox(
                 width: 5,
               ),
               Text(
                 '$_minutes',
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 45),
               ),
               SizedBox(
                 width: 5,
               ),
               Text(
                 ':',
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 25),
               ),
               SizedBox(
                 width: 5,
               ),
               Text(
                 '$_seconds',
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(fontSize: 45),
               ),
             ],
           ),
@@ -116,7 +132,8 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ElevatedButton(
+              MaterialButton(
+                color: Colors.green,
                 onPressed: () {
                   start();
                 },
@@ -124,19 +141,19 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
                   'Start',
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {},
+              MaterialButton(
+                color: Colors.grey.shade200,
+                onPressed: () {
+                  stop();
+                },
                 child: Text(
                   'Pause',
                 ),
               ),
-              ElevatedButton(
+              MaterialButton(
+                color: Colors.red,
                 onPressed: () {
-                  setState(() {
-                    _hours = 0;
-                    _minutes = 0;
-                    _seconds = 0;
-                  });
+                  reset();
                 },
                 child: Text(
                   'Reset',
