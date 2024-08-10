@@ -5,188 +5,77 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {},
-          ),
+          backgroundColor: Colors.grey.shade600,
           title: Text(
-            'Weather',
+            'Stopwatch',
             style: TextStyle(
-              color: Colors.black87,
-              fontSize: 25,
+              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
           centerTitle: true,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.settings),
-            ),
-          ],
         ),
-        body: _buildBody(),
+        body: _stopWatchBody(),
       ),
     );
   }
 }
 
-Widget _buildBody() {
-  return SingleChildScrollView(
-    child: Column(
-      children: [
-        _headerImage(),
-        SafeArea(
-          child: Padding(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                _weatherDescription(),
-                Divider(),
-                _temperature(),
-                Divider(),
-                _temperatureForecast(),
-                Divider(),
-                _footerRatings(),
-              ],
-            ),
-            padding: EdgeInsets.all(
-              16,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
+class _stopWatchBody extends StatefulWidget {
+  const _stopWatchBody({super.key});
+
+  @override
+  State<_stopWatchBody> createState() => _stopWatchBodyState();
 }
 
-Image _headerImage() {
-  return Image(
-    image: NetworkImage(
-        'https://kartinkof.club/uploads/posts/2022-04/1649965770_39-kartinkof-club-p-solntse-kartinki-prikolnie-43.jpg'),
-    fit: BoxFit.cover,
-  );
-}
-
-Column _weatherDescription() {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Text(
-        'Monday - June 11',
-        style: TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      Divider(),
-      Text(
-        'Today the weather is great, how is my mood, today I don\'t want to open up, but I want to jump and eat delicious food!',
-        style: TextStyle(
-          color: Colors.black,
-        ),
-      ),
-    ],
-  );
-}
-
-Row _temperature() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Column(
+class _stopWatchBodyState extends State<_stopWatchBody> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
         children: [
-          Icon(
-            Icons.wb_sunny_sharp,
-            color: Colors.yellow,
-          ),
-        ],
-      ),
-      SizedBox(
-        width: 16,
-      ),
-      Column(
-        children: [
+
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                '\t 27°C  -\t Clear sky and sunny!',
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'Start',
+                ),
               ),
-            ],
-          ),
-          Row(
-            children: [
-              Text(
-                'Tomsk region, Tomsk city',
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'Pause',
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'Countinue',
+                ),
               ),
             ],
           ),
         ],
       ),
-    ],
-  );
+    );
+  }
 }
 
-Wrap _temperatureForecast() {
-  return Wrap(
-    spacing: 10,
-    children: List.generate(7, (int index) {
-      return Chip(
-        label: Text(
-          '${index + 20}°C',
-          style: TextStyle(fontSize: 14),
-        ),
-        avatar: Icon(
-          Icons.wb_sunny_outlined,
-          color: Colors.yellow,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-          side: BorderSide(
-            color: Colors.black38,
-          ),
-        ),
-        backgroundColor: Colors.white,
-      );
-    }),
-  );
-}
-
-Row _footerRatings() {
-  return Row(
-    children: [
-      Text('Info from weatherforyou.ru'),
-      SizedBox(
-        width: 60,
-      ),
-      Icon(
-        Icons.star,
-        color: Colors.amber,
-      ),
-      Icon(
-        Icons.star,
-        color: Colors.amber,
-      ),
-      Icon(
-        Icons.star,
-        color: Colors.amber,
-      ),
-      Icon(
-        Icons.star,
-        color: Colors.amber,
-      ),
-      Icon(
-        Icons.star,
-        color: Colors.grey,
-      ),
-    ],
-  );
+class _timer {
+  int _seconds = 0;
+  int _minutes = 0;
+  int _hours = 0;
+  bool _start = true;
+  bool _pause = false;
+  bool _countinue = false;
 }
