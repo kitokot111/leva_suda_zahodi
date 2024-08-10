@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'user.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,6 +43,8 @@ final _emailController = TextEditingController();
 final _storyController = TextEditingController();
 final _passController = TextEditingController();
 final _confirmPassController = TextEditingController();
+
+User newUser = User();
 
 @override
 void dispose() {
@@ -93,7 +96,7 @@ class _registrationBodyState extends State<_registrationBody> {
                   ),
                 ),
               ),
-                validator: _validateName,
+              onSaved: (val) => newUser.name = val,
             ),
             SizedBox(
               height: 10,
@@ -134,6 +137,7 @@ class _registrationBodyState extends State<_registrationBody> {
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
               ],
+              onSaved: (val) => newUser.phone = val,
             ),
             SizedBox(
               height: 10,
@@ -163,6 +167,7 @@ class _registrationBodyState extends State<_registrationBody> {
                 border: OutlineInputBorder(),
               ),
               maxLines: 3,
+              onSaved: (val) => newUser.story = val,
             ),
             SizedBox(
               height: 10,
@@ -233,13 +238,3 @@ Confirm password ${_confirmPassController.text}
   }
 }
 
-String? _validateName(String? value) {
-  final _nameExp = RegExp(r'^[A-Za-z ]+$');
-  if (value == null) {
-    return 'Name is reqired.';
-  } else if (!_nameExp.hasMatch(value)) {
-    return 'Please enter alphabetical characters.';
-  } else {
-    return null;
-  }
-}
