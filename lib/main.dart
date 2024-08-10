@@ -1,13 +1,12 @@
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey.shade600,
-          title: Text(
+          title: const Text(
             'Stopwatch',
             style: TextStyle(
               color: Colors.white,
@@ -24,14 +23,14 @@ class MyApp extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: _stopWatchBody(),
+        body: const _stopWatchBody(),
       ),
     );
   }
 }
 
 class _stopWatchBody extends StatefulWidget {
-  _stopWatchBody({super.key});
+  const _stopWatchBody();
 
   @override
   State<_stopWatchBody> createState() => _stopWatchBodyState();
@@ -60,25 +59,25 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
 
   void start() {
     _startWatch = true;
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      int _localSeconds = _seconds + 1;
-      int _localMinutes = _minutes;
-      int _localHours = _hours;
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      int localSeconds = _seconds + 1;
+      int localMinutes = _minutes;
+      int localHours = _hours;
 
-      if (_localSeconds > 59) {
-        if (_localMinutes > 59) {
-          _localHours++;
-          _localMinutes = 0;
+      if (localSeconds > 59) {
+        if (localMinutes > 59) {
+          localHours++;
+          localMinutes = 0;
         } else {
-          _localMinutes++;
-          _localSeconds = 0;
+          localMinutes++;
+          localSeconds = 0;
         }
       }
 
       setState(() {
-        _seconds = _localSeconds;
-        _minutes = _localMinutes;
-        _hours = _localHours;
+        _seconds = localSeconds;
+        _minutes = localMinutes;
+        _hours = localHours;
       });
     });
   }
@@ -94,39 +93,39 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
             children: [
               Text(
                 '$_hours',
-                style: TextStyle(fontSize: 45),
+                style: const TextStyle(fontSize: 45),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
-              Text(
+              const Text(
                 ':',
                 style: TextStyle(fontSize: 25),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Text(
                 '$_minutes',
-                style: TextStyle(fontSize: 45),
+                style: const TextStyle(fontSize: 45),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
-              Text(
+              const Text(
                 ':',
                 style: TextStyle(fontSize: 25),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 5,
               ),
               Text(
                 '$_seconds',
-                style: TextStyle(fontSize: 45),
+                style: const TextStyle(fontSize: 45),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -137,7 +136,7 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
                 onPressed: () {
                   start();
                 },
-                child: Text(
+                child: const Text(
                   'Start',
                 ),
               ),
@@ -146,7 +145,7 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
                 onPressed: () {
                   stop();
                 },
-                child: Text(
+                child: const Text(
                   'Pause',
                 ),
               ),
@@ -155,7 +154,7 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
                 onPressed: () {
                   reset();
                 },
-                child: Text(
+                child: const Text(
                   'Reset',
                 ),
               ),
