@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,7 +31,11 @@ class MyApp extends StatelessWidget {
 }
 
 class _stopWatchBody extends StatefulWidget {
-  const _stopWatchBody({super.key});
+   _stopWatchBody({super.key});
+
+  int _seconds = 0;
+  int _minutes = 0;
+  int _hours = 0;
 
   @override
   State<_stopWatchBody> createState() => _stopWatchBodyState();
@@ -46,29 +52,35 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'houes',
+                'hhh',
                 style: TextStyle(fontSize: 25),
               ),
               SizedBox(
                 width: 5,
               ),
-              Text(':'),
+              Text(
+                ':',
+                style: TextStyle(fontSize: 15),
+              ),
               SizedBox(
                 width: 5,
               ),
               Text(
-                'houes',
+                'mmm',
                 style: TextStyle(fontSize: 25),
               ),
               SizedBox(
                 width: 5,
               ),
-              Text(':'),
+              Text(
+                ':',
+                style: TextStyle(fontSize: 15),
+              ),
               SizedBox(
                 width: 5,
               ),
               Text(
-                'houes',
+                'sss',
                 style: TextStyle(fontSize: 25),
               ),
             ],
@@ -80,7 +92,11 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+
+                  });
+                },
                 child: Text(
                   'Start',
                 ),
@@ -94,7 +110,7 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
               ElevatedButton(
                 onPressed: () {},
                 child: Text(
-                  'Countinue',
+                  'Reset',
                 ),
               ),
             ],
@@ -103,13 +119,10 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
       ),
     );
   }
+
 }
 
-class _timer {
-  int _seconds = 0;
-  int _minutes = 0;
-  int _hours = 0;
-  bool _start = true;
-  bool _pause = false;
-  bool _countinue = false;
-}
+
+
+
+
