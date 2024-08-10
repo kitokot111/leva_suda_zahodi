@@ -269,48 +269,48 @@ Confirm password ${_confirmPassController.text}
    ''');
   }
 
-  void _showDialog({String? name}) {
+  void _showDialog({required String name}) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text(
-              'Registration succesful!',
-              style: TextStyle(
-                color: Colors.green,
-              ),
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text(
+            'Registration successful',
+            style: TextStyle(
+              color: Colors.green,
             ),
-            content: Text(
-              '$name is now a verified register form',
-              style: TextStyle(
-                fontWeight: FontWeight.w200,
-                fontSize: 16,
-              ),
+          ),
+          content: Text(
+            '$name is now a verified register form',
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 18.0,
             ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => UserInfoPage(
-                        userInfo: newUser,
-                      ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserInfoPage(
+                      userInfo: newUser,
                     ),
-                  );
-                },
-                child: const Text(
-                  'Verified',
-                  style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 16,
                   ),
+                );
+              },
+              child: const Text(
+                'Verified',
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 18.0,
                 ),
               ),
-            ],
-          );
-        }
+            ),
+          ],
         );
+      },
+    );
   }
 }
