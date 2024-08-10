@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:new_project/user.dart';
 
 
+
 class UserInfoPage extends StatelessWidget {
 
-  User? userInfo;
-  UserInfoPage({this.userInfo});
+  final User userInfo;
+  const UserInfoPage({Key? key, required this.userInfo}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,21 +23,21 @@ class UserInfoPage extends StatelessWidget {
           children: [
             ListTile(
               title: Text(
-                '${userInfo?.name}',
+                '${userInfo.name}',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              subtitle: Text('${userInfo?.story}'),
+              subtitle: Text('${userInfo.story}'),
               leading: Icon(
                 Icons.person,
                 color: Colors.black,
               ),
-              trailing: Text('${userInfo?.country}'),
+              trailing: Text('${userInfo.country}'),
             ),
             ListTile(
               title: Text(
-                '${userInfo?.phone}',
+                '${userInfo.phone}',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                 ),
@@ -48,7 +49,7 @@ class UserInfoPage extends StatelessWidget {
             ),
             ListTile(
               title: Text(
-                '${userInfo?.email}',
+                '${userInfo.email}',
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
                 ),

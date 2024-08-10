@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:new_project/user_info_page.dart';
@@ -274,7 +274,7 @@ Confirm password ${_confirmPassController.text}
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text(
+            title: const Text(
               'Registration succesful!',
               style: TextStyle(
                 color: Colors.green,
@@ -300,7 +300,7 @@ Confirm password ${_confirmPassController.text}
                     ),
                   );
                 },
-                child: Text(
+                child: const Text(
                   'Verified',
                   style: TextStyle(
                     color: Colors.green,
@@ -310,6 +310,7 @@ Confirm password ${_confirmPassController.text}
               ),
             ],
           );
-        });
+        }
+        );
   }
 }
