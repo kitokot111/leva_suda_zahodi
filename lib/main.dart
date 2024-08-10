@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:new_project/user_info_page.dart';
 import 'user.dart';
 
 void main() {
@@ -167,11 +168,12 @@ class _registrationBodyState extends State<_registrationBody> {
                   Icons.map,
                 ),
                 labelText: 'Country?',
-
               ),
               items: _countries.map((country) {
-                return DropdownMenuItem(child: Text(country),
-                  value: country,);
+                return DropdownMenuItem(
+                  child: Text(country),
+                  value: country,
+                );
               }).toList(),
               onChanged: (country) {
                 print(country);
@@ -254,9 +256,11 @@ class _registrationBodyState extends State<_registrationBody> {
         ),
       ),
     );
+
   }
 
   void _submitForm() {
+    _showDialog(name: _nameController.text);
     print('''Name: ${_nameController.text} 
 Phone: ${_phoneController.text} 
 Email: ${_emailController.text} 
@@ -265,4 +269,47 @@ Password: ${_passController.text}
 Confirm password ${_confirmPassController.text}
    ''');
   }
+
+
+  void _showDialog({String? name}) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              'Registration succesful!',
+              style: TextStyle(
+                color: Colors.green,
+              ),
+            ),
+            content: Text(
+              '$name is now a verified register form',
+              style: TextStyle(
+                fontWeight: FontWeight.w200,
+                fontSize: 16,
+              ),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => UserInfoPage(),
+                    ),
+                    );
+                  },
+                  child: Text(
+                    'Verified',
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontSize: 16,
+                    ),
+                  ))
+            ],
+          );
+        });
+  }
 }
+
+
+
