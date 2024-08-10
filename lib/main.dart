@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.grey.shade600,
           title: const Text(
-            'Stopwatch',
+            'STOPWATCH',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
