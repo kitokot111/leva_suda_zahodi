@@ -256,7 +256,6 @@ class _registrationBodyState extends State<_registrationBody> {
         ),
       ),
     );
-
   }
 
   void _submitForm() {
@@ -269,7 +268,6 @@ Password: ${_passController.text}
 Confirm password ${_confirmPassController.text}
    ''');
   }
-
 
   void _showDialog({String? name}) {
     showDialog(
@@ -291,25 +289,27 @@ Confirm password ${_confirmPassController.text}
             ),
             actions: [
               TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => UserInfoPage(),
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UserInfoPage(
+                        userInfo: newUser,
+                      ),
                     ),
-                    );
-                  },
-                  child: Text(
-                    'Verified',
-                    style: TextStyle(
-                      color: Colors.green,
-                      fontSize: 16,
-                    ),
-                  ))
+                  );
+                },
+                child: Text(
+                  'Verified',
+                  style: TextStyle(
+                    color: Colors.green,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
             ],
           );
         });
   }
 }
-
-
-
