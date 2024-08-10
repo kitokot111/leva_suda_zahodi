@@ -40,8 +40,42 @@ class _stopWatchBodyState extends State<_stopWatchBody> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'houes',
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Text(':'),
+              SizedBox(
+                width: 5,
+              ),
+              Text(
+                'houes',
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Text(':'),
+              SizedBox(
+                width: 5,
+              ),
+              Text(
+                'houes',
+                style: TextStyle(fontSize: 25),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
