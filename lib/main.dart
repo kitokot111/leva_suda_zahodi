@@ -35,6 +35,7 @@ class _registrationBody extends StatefulWidget {
   @override
   State<_registrationBody> createState() => _registrationBodyState();
 }
+
 final _formKey = GlobalKey<FormState>();
 bool _hidePass = true;
 final _nameController = TextEditingController();
@@ -45,6 +46,9 @@ final _passController = TextEditingController();
 final _confirmPassController = TextEditingController();
 
 User newUser = User();
+
+List<String> _countries = ['Russia', 'England', 'France', 'Germany'];
+String? _selectedCountry;
 
 @override
 void dispose() {
@@ -156,6 +160,30 @@ class _registrationBodyState extends State<_registrationBody> {
             SizedBox(
               height: 20,
             ),
+            DropdownButtonFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                icon: Icon(
+                  Icons.map,
+                ),
+                labelText: 'Country?',
+
+              ),
+              items: _countries.map((country) {
+                return DropdownMenuItem(child: Text(country),
+                  value: country,);
+              }).toList(),
+              onChanged: (country) {
+                print(country);
+                setState(() {
+                  _selectedCountry = country;
+                  newUser.country = country;
+                });
+              },
+            ),
+            SizedBox(
+              height: 20,
+            ),
             TextFormField(
               controller: _storyController,
               decoration: InputDecoration(
@@ -213,7 +241,7 @@ class _registrationBodyState extends State<_registrationBody> {
               height: 15,
             ),
             MaterialButton(
-              onPressed:_submitForm,
+              onPressed: _submitForm,
               child: Text(
                 'Submit Form',
                 style: TextStyle(
@@ -227,6 +255,7 @@ class _registrationBodyState extends State<_registrationBody> {
       ),
     );
   }
+
   void _submitForm() {
     print('''Name: ${_nameController.text} 
 Phone: ${_phoneController.text} 
@@ -237,4 +266,3 @@ Confirm password ${_confirmPassController.text}
    ''');
   }
 }
-
